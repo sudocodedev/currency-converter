@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="emerald">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Currency Converter</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="./build.css" rel="stylesheet">
+  <script defer src="./script.js"></script>
+</head>
+<body class="relative">
+
+  <!-- Logo -->
+  <div class="cursor-pointer absolute z-[2] top-3 left-5">
+    <img height="110px" width="140px" src="./SudoCodeDev-logo.png" alt="logo">
+  </div>
+
+  <!-- Themes Picker -->
+  <div class="top-4 right-5 z-[2] absolute dropdown dropdown-end">
+    <div tabindex="0" role="button" class="fa-2xl m-1"><i class="fa-solid fa-bars"></i></div>
+    <ul id="theme" tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[4] w-52 p-2 shadow">
+      <p class="font-bold text-center">Select Themes</p>
+      <hr class="mt-2">
+      <li><a id="theme1">Emerald</a></li>
+      <li><a id="theme2">Sunset</a></li>
+      <li><a id="theme3">Cyberpunk</a></li>
+    </ul>
+  </div>
+
+  <!-- Main -->
+  <div class="min-h-screen w-full flex justify-center">
+    
+    <!-- Header -->
+    <div class="h-fit w-2/4 px-4 pt-4 pb-6 mt-20">
+      <div class="text-5xl font-extrabold text-center px-4 py-3 my-4">
+        <span class="cursor-pointer bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">Currency Converter</span>
+      </div>
+
+      <!-- Exchange Rate -->
+      <div class="exchange-rate text-center my-8 p-5">
+        <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
+      </div>
+
+      <!-- Conversion -->
+      <div id="main" class="flex w-full flex-col lg:flex-row">
+
+        <!-- From Currency -->
+        <div class="from-currency card bg-base-300 rounded-box grid h-44 flex-grow place-items-center p-4">
+          <div class="flex items-center">
+            <img id="from-flag" class="fa-spinner fa-spin-pulse w-8 h-8 ms-3" src="./load-icon.png" alt="load">
+            <input class="text-3xl font-bold input input-ghost w-3/4 max-w-xs ms-auto me-2" type="number" id="from-currency-amount" value="1">
+          </div>
+          <select class="select select-bordered w-full max-w-xs"></select>
+        </div>
+
+        <!-- Divider -->
+        <div class="divider lg:divider-horizontal">
+          <i class="fa-solid fa-repeat fa-2xl cursor-pointer"></i>
+        </div>
+
+        <!-- To Currency -->
+        <div class="to-currency card bg-base-300 rounded-box grid h-44 flex-grow place-items-center p-4">
+          <div class="flex items-center">
+            <img id="to-flag" class="fa-spinner fa-spin-pulse w-8 h-8 ms-3" src="./load-icon.png" alt="load">
+            <input class="text-3xl font-bold input input-ghost w-3/4 max-w-xs ms-auto me-2" type="number" id="to-currency-amount">
+          </div>
+          <select class="select select-bordered w-full max-w-xs"></select>
+        </div>
+
+      </div>
+
+      <!-- Error Info -->
+      <p id="error" style="display: none;" class="mt-6 text-red-600 text-center font-semibold"><i class="fa-solid fa-circle-exclamation fa-xl"></i> Invalid currency inputs.</p>
+    </div>
+  </div>
+  
+  <!-- Footer -->
+  <footer class="footer bg-neutral text-neutral-content items-center p-4">
+    <aside class="grid-flow-col items-center">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        class="fill-current">
+        <path
+          d="M22.672 15.226l-2.432.811.841 2.515c.33 1.019-.209 2.127-1.23 2.456-1.15.325-2.148-.321-2.463-1.226l-.84-2.518-5.013 1.677.84 2.517c.391 1.203-.434 2.542-1.831 2.542-.88 0-1.601-.564-1.86-1.314l-.842-2.516-2.431.809c-1.135.328-2.145-.317-2.463-1.229-.329-1.018.211-2.127 1.231-2.456l2.432-.809-1.621-4.823-2.432.808c-1.355.384-2.558-.59-2.558-1.839 0-.817.509-1.582 1.327-1.846l2.433-.809-.842-2.515c-.33-1.02.211-2.129 1.232-2.458 1.02-.329 2.13.209 2.461 1.229l.842 2.515 5.011-1.677-.839-2.517c-.403-1.238.484-2.553 1.843-2.553.819 0 1.585.509 1.85 1.326l.841 2.517 2.431-.81c1.02-.33 2.131.211 2.461 1.229.332 1.018-.21 2.126-1.23 2.456l-2.433.809 1.622 4.823 2.433-.809c1.242-.401 2.557.484 2.557 1.838 0 .819-.51 1.583-1.328 1.847m-8.992-6.428l-5.01 1.675 1.619 4.828 5.011-1.674-1.62-4.829z"></path>
+      </svg>
+      <p class="font-sans">Made with ❤ by <span class="font-bold">SudoCodeDev</span></p>
+    </aside>
+    <nav class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
+      <!-- Github -->
+      <a href="https://github.com/sudocodedev" target="_blank" rel="noopener noreferrer">
+        <svg width="25px" height="25px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>github [#142]</title> <desc>Created with Sketch.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Dribbble-Light-Preview" transform="translate(-140.000000, -7559.000000)" fill="#000000"> <g id="icons" transform="translate(56.000000, 160.000000)"> <path d="M94,7399 C99.523,7399 104,7403.59 104,7409.253 C104,7413.782 101.138,7417.624 97.167,7418.981 C96.66,7419.082 96.48,7418.762 96.48,7418.489 C96.48,7418.151 96.492,7417.047 96.492,7415.675 C96.492,7414.719 96.172,7414.095 95.813,7413.777 C98.04,7413.523 100.38,7412.656 100.38,7408.718 C100.38,7407.598 99.992,7406.684 99.35,7405.966 C99.454,7405.707 99.797,7404.664 99.252,7403.252 C99.252,7403.252 98.414,7402.977 96.505,7404.303 C95.706,7404.076 94.85,7403.962 94,7403.958 C93.15,7403.962 92.295,7404.076 91.497,7404.303 C89.586,7402.977 88.746,7403.252 88.746,7403.252 C88.203,7404.664 88.546,7405.707 88.649,7405.966 C88.01,7406.684 87.619,7407.598 87.619,7408.718 C87.619,7412.646 89.954,7413.526 92.175,7413.785 C91.889,7414.041 91.63,7414.493 91.54,7415.156 C90.97,7415.418 89.522,7415.871 88.63,7414.304 C88.63,7414.304 88.101,7413.319 87.097,7413.247 C87.097,7413.247 86.122,7413.234 87.029,7413.87 C87.029,7413.87 87.684,7414.185 88.139,7415.37 C88.139,7415.37 88.726,7417.2 91.508,7416.58 C91.513,7417.437 91.522,7418.245 91.522,7418.489 C91.522,7418.76 91.338,7419.077 90.839,7418.982 C86.865,7417.627 84,7413.783 84,7409.253 C84,7403.59 88.478,7399 94,7399" id="github-[#142]"> </path> </g> </g> </g> </g></svg>
+      </a>
+
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/__s_h_i_v_a_7__/" target="_blank" rel="noopener noreferrer">
+        <svg height="25px" width="25px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 551.034 551.034" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="XMLID_13_"> <linearGradient id="XMLID_2_" gradientUnits="userSpaceOnUse" x1="275.517" y1="4.5714" x2="275.517" y2="549.7202" gradientTransform="matrix(1 0 0 -1 0 554)"> <stop offset="0" style="stop-color:#E09B3D"></stop> <stop offset="0.3" style="stop-color:#C74C4D"></stop> <stop offset="0.6" style="stop-color:#C21975"></stop> <stop offset="1" style="stop-color:#7024C4"></stop> </linearGradient> <path id="XMLID_17_" style="fill:url(#XMLID_2_);" d="M386.878,0H164.156C73.64,0,0,73.64,0,164.156v222.722 c0,90.516,73.64,164.156,164.156,164.156h222.722c90.516,0,164.156-73.64,164.156-164.156V164.156 C551.033,73.64,477.393,0,386.878,0z M495.6,386.878c0,60.045-48.677,108.722-108.722,108.722H164.156 c-60.045,0-108.722-48.677-108.722-108.722V164.156c0-60.046,48.677-108.722,108.722-108.722h222.722 c60.045,0,108.722,48.676,108.722,108.722L495.6,386.878L495.6,386.878z"></path> <linearGradient id="XMLID_3_" gradientUnits="userSpaceOnUse" x1="275.517" y1="4.5714" x2="275.517" y2="549.7202" gradientTransform="matrix(1 0 0 -1 0 554)"> <stop offset="0" style="stop-color:#E09B3D"></stop> <stop offset="0.3" style="stop-color:#C74C4D"></stop> <stop offset="0.6" style="stop-color:#C21975"></stop> <stop offset="1" style="stop-color:#7024C4"></stop> </linearGradient> <path id="XMLID_81_" style="fill:url(#XMLID_3_);" d="M275.517,133C196.933,133,133,196.933,133,275.516 s63.933,142.517,142.517,142.517S418.034,354.1,418.034,275.516S354.101,133,275.517,133z M275.517,362.6 c-48.095,0-87.083-38.988-87.083-87.083s38.989-87.083,87.083-87.083c48.095,0,87.083,38.988,87.083,87.083 C362.6,323.611,323.611,362.6,275.517,362.6z"></path> <linearGradient id="XMLID_4_" gradientUnits="userSpaceOnUse" x1="418.306" y1="4.5714" x2="418.306" y2="549.7202" gradientTransform="matrix(1 0 0 -1 0 554)"> <stop offset="0" style="stop-color:#E09B3D"></stop> <stop offset="0.3" style="stop-color:#C74C4D"></stop> <stop offset="0.6" style="stop-color:#C21975"></stop> <stop offset="1" style="stop-color:#7024C4"></stop> </linearGradient> <circle id="XMLID_83_" style="fill:url(#XMLID_4_);" cx="418.306" cy="134.072" r="34.149"></circle> </g> </g></svg>
+      </a>
+
+      <!-- Dev.to -->
+      <a href="https://dev.to/foxycoder123" target="_blank" rel="noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-label="dev.to" role="img" viewBox="0 0 512 512" width="25px" height="25px" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><rect width="512" height="512" rx="15%"></rect><path fill="#ffffff" d="M140.47 203.94h-17.44v104.47h17.45c10.155-.545 17.358-8.669 17.47-17.41v-69.65c-.696-10.364-7.796-17.272-17.48-17.41zm45.73 87.25c0 18.81-11.61 47.31-48.36 47.25h-46.4V172.98h47.38c35.44 0 47.36 28.46 47.37 47.28zm100.68-88.66H233.6v38.42h32.57v29.57H233.6v38.41h53.29v29.57h-62.18c-11.16.29-20.44-8.53-20.72-19.69V193.7c-.27-11.15 8.56-20.41 19.71-20.69h63.19zm103.64 115.29c-13.2 30.75-36.85 24.63-47.44 0l-38.53-144.8h32.57l29.71 113.72 29.57-113.72h32.58z"></path></g></svg>
+      </a>
+    </nav>
+  </footer>
+
+</body>
+
+
+</html>
